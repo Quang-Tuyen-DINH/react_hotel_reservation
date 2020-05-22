@@ -1,24 +1,26 @@
 import React from 'react';
-import { Switch, Route } from 'react-router-dom';
-
 import logo from './logo.svg';
 import './App.css';
 
+import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
 import Rooms from "./pages/Rooms";
 import SingleRoom from "./pages/SingleRoom";
 import Error from "./pages/Error";
 
+import { Switch, Route } from 'react-router-dom';
+
 function App() {
   return (
-    <div>
+    <>
+      <Navbar />
       <Switch>
-        <Route path="/" component={Home} />
-        <Route path="/rooms/" component={Rooms} />
-        <Route path="/single-room" component={SingleRoom} />
+        <Route exact path="/" component={Home} />
+        <Route exact path="/rooms/" component={Rooms} />
+        <Route exact path="/rooms/:slug" component={SingleRoom} />
         <Route component={Error} />
       </Switch>
-    </div>
+    </>
   );
 }
 
